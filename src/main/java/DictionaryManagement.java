@@ -38,9 +38,40 @@ public class DictionaryManagement extends Dictionary {
     public static void dictionaryLookup() {
         System.out.print("Searching: ");
         String wordSearch = scan.next();
-        scan.nextLine();
-        System.out.println(  dictionary.getOrDefault("Mean: " + wordSearch ,"Word not found"));
+        System.out.println( dictionary.getOrDefault(  wordSearch ,"Word not found"));
 
+    }
+    public static void dictionaryEditing() {
+        System.out.print("Editing: ");
+        String wordEdit = scan.next();
+        scan.nextLine();
+        System.out.print("New mean: ");
+        String newMean = scan.next();
+        dictionary.put(wordEdit,newMean);
+    }
+
+    public static void dictionaryDelete() {
+        System.out.print("Word need Delete: ");
+        String wordDelete = scan.next();
+        if( dictionary.containsKey(wordDelete) ) {
+            dictionary.remove(wordDelete);
+        }
+        else {
+            System.out.println("No word found");
+        }
+    }
+    public static void dictionaryExportToFile() {
+        try {
+            FileWriter fw = new FileWriter("data.txt");
+            BufferedWriter bw = new BufferedWriter(fw);
+            for (Map.Entry<String, String> getWord : dictionary.entrySet()){
+                String WordtoS = getWord.getKey() + "\t" + getWord.getValue();
+                bw.write(WordtoS);
+                bw.newLine();
+            }
+            bw.close();
+            fw.close();
+        }catch (Exception e){ }
     }
 
 }
