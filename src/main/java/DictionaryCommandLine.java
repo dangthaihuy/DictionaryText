@@ -15,6 +15,12 @@ public class DictionaryCommandLine extends DictionaryManagement {
     public static void dictionaryBasic() {
         DictionaryManagement.insertFromCommandline();
         showAllWords();
+
     }
 
+    public static void dictionaryAdvanced() {
+        DictionaryManagement.insertFromFile();
+        showAllWords();
+        DictionaryManagement.dictionaryLookup();
+    }
 }

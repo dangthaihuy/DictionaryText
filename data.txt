@@ -1,0 +1,2 @@
+hello	Xin chào
+house	Ngôi nhà
